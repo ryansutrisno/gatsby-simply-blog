@@ -3,7 +3,7 @@ import { colors } from "styles/GlobalStyles"
 
 export const BannerWrapper = styled.div`
   margin: 20px 0 0 0;
-  display: none;
+  display: block;
   @media screen and (min-width: 768px) {
     display: block;
   }
