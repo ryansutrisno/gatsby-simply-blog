@@ -36,14 +36,17 @@ const IndexPage = ({ data }) => {
 export default IndexPage
 
 export const query = graphql`
-  query blogListQuery {
+  query blogListQuery($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
-      filter: { frontmatter: { type: { eq: "post" } } }
+      limit: $limit
+      skip: $skip
+      filter: { frontmatter: { type: { eq: "post" }, publish: { eq: true } } }
       sort: { fields: frontmatter___date, order: DESC }
     ) {
       edges {
         node {
           fields {
+            slug
             readingTime {
               text
             }
